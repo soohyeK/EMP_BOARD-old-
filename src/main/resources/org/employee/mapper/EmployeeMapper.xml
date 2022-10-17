@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.employee.mapper.EmployeeMapper">
+    
+    <select id="selectAllEmployees" resultType="org.employee.domain.EmployeeVO">
+    	<![CDATA[
+    		select * from employees2 order by enter desc
+    	]]>
+    
+    </select>
+    
+    <insert id="insertEmployee">
+    	insert into employees2 values(#{id}, #{pass}, #{name}, #{lev}, sysdate, #{gender}, #{phone})
+    </insert>
+    
+    <select id="getId" resultType="int">
+    	select count(*) from employees2 where id=#{id}
+    </select>
+    
+    <select id="getMember" resultType="org.employee.domain.EmployeeVO">
+    	select * from employees2 where id=#{id}
+    </select>
+    
+    <update id="updateEmployee">
+    	update employees2
+    		set gender=#{gender}, pass=#{pass}, name=#{name}, lev=#{lev}, phone=#{phone}
+    	where id = #{id}
+    </update>
+    
+    <delete id="deleteEmployee">
+    	delete from employees2 where id=#{id}
+    </delete>
+</mapper>
